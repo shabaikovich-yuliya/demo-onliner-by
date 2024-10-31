@@ -11,6 +11,12 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    public void clickButtonToFollowLoginForm() {
+        By buttonToFollowLoginFormBy = By.xpath(LoginXpath.BUTTON_TO_FOLLOW_LOGIN_FORM_XPATH);
+        WebElement buttonToFollowLoginFormWebElement = driver.findElement(buttonToFollowLoginFormBy);
+        buttonToFollowLoginFormWebElement.click();
+    }
+
     public void sendKeysUsername(String username) {
         By inputUsernameBy = By.xpath(LoginXpath.INPUT_USERNAME_XPATH);
         WebElement inputUsernameWebElement = driver.findElement(inputUsernameBy);
@@ -27,5 +33,17 @@ public class LoginPage {
         By clickButtonSigninBy = By.xpath(LoginXpath.BUTTON_SIGNIN_XPATH);
         WebElement clicButtonSigninWebElement = driver.findElement(clickButtonSigninBy);
         clicButtonSigninWebElement.click();
+    }
+
+    public String getErrorMessagePasswordIsRequired() {
+        By errorMessagePasswordIsRequiredBy = By.xpath(LoginMessages.PASSWORD_IS_REQUIRED);
+        WebElement errorMessagePasswordIsRequiredWebElement = driver.findElement(errorMessagePasswordIsRequiredBy);
+        return errorMessagePasswordIsRequiredWebElement.getText();
+    }
+
+    public String getErrorMessageUsernameIsRequired() {
+        By errorMessageUsernameIsRequiredBy = By.xpath(LoginMessages.USERNAME_IS_REQUIRED);
+        WebElement errorMessageUsernameIsRequiredWebElement = driver.findElement(errorMessageUsernameIsRequiredBy);
+        return errorMessageUsernameIsRequiredWebElement.getText();
     }
 }
