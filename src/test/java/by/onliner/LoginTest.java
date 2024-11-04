@@ -1,9 +1,6 @@
 package by.onliner;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -27,6 +24,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Тест 2 - Пустое поле логина")
     public void noRequiredFieldUsername() {
         this.loginPage.sendKeysPassword("12345Ssa./");
         this.loginPage.clickButtonSignin();
@@ -35,8 +33,19 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Тест 2 - Пустое поле пароля")
     public void noRequiredFieldPassword() {
         this.loginPage.sendKeysUsername("username");
+        this.loginPage.clickButtonSignin();
+
+        Assertions.assertEquals(LoginMessages.PASSWORD_IS_REQUIRED, this.loginPage.getErrorMessagePasswordIsRequired());
+    }
+
+    @Test
+    @DisplayName("Тест 3 - Несуществующий пользователь")
+    public void unregisteredUser() {
+        this.loginPage.sendKeysUsername("username");
+        this.loginPage.sendKeysPassword("pass123!");
         this.loginPage.clickButtonSignin();
 
         Assertions.assertEquals(LoginMessages.PASSWORD_IS_REQUIRED, this.loginPage.getErrorMessagePasswordIsRequired());
