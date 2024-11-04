@@ -36,13 +36,13 @@ public class LoginPage {
     }
 
     public String getErrorMessagePasswordIsRequired() {
-        By errorMessagePasswordIsRequiredBy = By.xpath(LoginMessages.PASSWORD_IS_REQUIRED);
+        By errorMessagePasswordIsRequiredBy = By.xpath(LoginXpath.ERROR_MESSAGE_PASSWORD_IS_REQUIRED_XPATH);
         WebElement errorMessagePasswordIsRequiredWebElement = driver.findElement(errorMessagePasswordIsRequiredBy);
         return errorMessagePasswordIsRequiredWebElement.getText();
     }
 
     public String getErrorMessageUsernameIsRequired() {
-        By errorMessageUsernameIsRequiredBy = By.xpath(LoginMessages.USERNAME_IS_REQUIRED);
+        By errorMessageUsernameIsRequiredBy = By.xpath(LoginXpath.ERROR_MESSAGE_USERNAME_IS_REQUIRED_XPATH);
         WebElement errorMessageUsernameIsRequiredWebElement = driver.findElement(errorMessageUsernameIsRequiredBy);
         return errorMessageUsernameIsRequiredWebElement.getText();
     }
